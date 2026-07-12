@@ -1,0 +1,244 @@
+%% sections/Method.tex
+\section{Research Methodology}
+\label{sec:method}
+
+\section{\texorpdfstring{\hl{4.
+Methodology}}{4. Methodology}}\label{methodology}
+
+\subsection{\texorpdfstring{\hl{4.1 Overall
+Workflow}}{4.1 Overall Workflow}}\label{overall-workflow}
+
+\hl{The methodological workflow consists of six stages (As shown in Fig.
+6): UAV image acquisition, empirical corpus construction, camera pose
+estimation and sparse reconstruction, neural rendering/reconstruction
+using four methods, quantitative and qualitative evaluation, and
+conservation-oriented interpretation. This workflow follows an
+engineering-informatics logic: a real heritage corpus is constructed
+first, multiple computational methods are tested under comparable
+conditions, and the results are then interpreted in relation to digital
+conservation tasks.}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{figures/media/image8.emf}}
+\caption{\textbf{\hl{Fig. 6. Overall methodological workflow for
+UAV-based neural reconstruction and conservation-oriented method
+selection.}}}
+\end{figure}
+
+\subsubsection{\texorpdfstring{\textbf{\hl{4.2 Benchmark protocol and
+fairness
+control}}}{4.2 Benchmark protocol and fairness control}}\label{benchmark-protocol-and-fairness-control}
+
+\hl{To ensure that the comparison among NeRF, 2DGS, 3DGS, and INGP was
+as fair and reproducible as possible, all methods were evaluated under a
+unified benchmark protocol. For each drum tower scene, the same UAV
+image set was used as input after image quality screening and resolution
+standardization. All images were resized to 1920 × 1080 pixels, and
+camera poses were estimated using the same SfM-based workflow to avoid
+method-specific pose estimation bias. The resulting camera parameters
+and image lists were then converted into the required input formats for
+the four reconstruction methods.}
+
+\hl{The train/test split followed an LLFF-style strategy where
+applicable, in which one image was selected as a test view at regular
+intervals. The same training and test image lists were used for all
+methods within each scene. For the Chaoli scene, no independent test
+image was available under the current split; therefore, the reported
+quantitative values for this scene are interpreted as reference values
+rather than fully independent test-set performance. This limitation is
+explicitly considered in the results and discussion sections.}
+
+\hl{To reduce implementation-related bias, all methods were trained and
+evaluated on the same workstation using identical image resolution,
+identical scene-level input data, and comparable camera poses. Default
+or officially recommended parameter settings were adopted unless a
+method failed to converge under the default configuration. Rendering
+quality was evaluated on the same held-out views for each scene where
+test views were available. PSNR, SSIM, and LPIPS were computed between
+the rendered images and the corresponding reference images. Training
+time and rendering speed were recorded under the same hardware
+environment to support efficiency comparison.}
+
+\hl{It should be noted that the benchmark is primarily designed to
+evaluate image-level rendering quality and practical reconstruction
+efficiency for conservation-oriented visualization. Therefore, the
+results should not be interpreted as a comprehensive geometric accuracy
+ranking of all methods. In particular, 2DGS has a surface-oriented
+formulation, and its potential advantages may be more fully reflected
+through geometry-specific indicators such as surface consistency, mesh
+accuracy, or component-level geometric completeness. This issue is
+further discussed as a limitation and as a direction for future work.}
+
+\subsection{\texorpdfstring{\hl{4.3Evaluation
+Metrics}}{4.3Evaluation Metrics}}\label{evaluation-metrics}
+
+\hl{Three image-quality metrics were used to evaluate rendered outputs
+against reference images: PSNR, SSIM, and LPIPS. PSNR measures
+pixel-level fidelity and is reported in dB, where higher values indicate
+lower reconstruction error. SSIM measures structural similarity in the
+range of 0 to 1, where higher values indicate better structural
+consistency. LPIPS measures perceptual feature distance, where lower
+values indicate better perceptual similarity. These metrics were
+complemented by training time, GPU memory consumption, rendering speed,
+and component-level visual interpretation.}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1553}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3590}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1462}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3396}}@{}}
+\caption{\textbf{\hl{Table 7. Evaluation metrics and
+interpretation}}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Metric}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Full name}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Direction}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Interpretation}}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Metric}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Full name}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Direction}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Interpretation}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\hl{PSNR} & \hl{Peak Signal-to-Noise Ratio} & \hl{Higher is better} &
+\hl{Pixel-level reconstruction fidelity} \\
+\hl{SSIM} & \hl{Structural Similarity Index Measure} & \hl{Higher is
+better} & \hl{Structural and visual consistency} \\
+\hl{LPIPS} & \hl{Learned Perceptual Image Patch Similarity} & \hl{Lower
+is better} & \hl{Perceptual similarity and texture realism} \\
+\hl{Training time} & \hl{Average training time} & \hl{Lower is better} &
+\hl{Computational efficiency} \\
+\hl{Rendering speed} & \hl{Frames per second} & \hl{Higher is better} &
+\hl{Real-time visualization capability} \\
+\end{longtable}
+
+\subsection{\texorpdfstring{\hl{4.4 Experimental Setup and
+Implementation
+Details}}{4.4 Experimental Setup and Implementation Details}}\label{experimental-setup-and-implementation-details}
+
+\hl{All experiments were conducted on a GPU cloud server equipped with
+an NVIDIA GeForce RTX 4090 GPU with 24 GB memory. Four neural
+rendering/reconstruction methods were compared: NeRF, 2DGS, 3DGS, and
+INGP. All methods used the same scene-level image corpus and the same
+train/test split scheme wherever applicable, and the final reported
+metrics were averaged over all available evaluation images.}
+
+\hl{Camera pose estimation and sparse reconstruction were performed
+using COLMAP 3.14.0 with CUDA acceleration. SIFT features were extracted
+with GPU acceleration, and the Sequential Matcher was adopted because
+the input images were derived from video sequences or sequential UAV
+acquisition. The OpenCV camera model was used, including the intrinsic
+and distortion parameters fx, fy, cx, cy, k1, k2, p1, and p2. A
+single-camera constraint was enabled using
+-\/-ImageReader.single\_camera 1. Sparse reconstruction was carried out
+using the COLMAP incremental SfM mapper, and image undistortion was
+performed using COLMAP image\_undistorter.}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0660}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2140}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3892}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1531}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1777}}@{}}
+\caption{\textbf{\hl{Table8. Reconstruction methods and implementation
+settings}}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Method}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Framework / codebase}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Key settings}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Output resolution}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Protocol}}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Method}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Framework / codebase}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Key settings}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Output resolution}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Protocol}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\hl{NeRF} & \hl{TensorFlow 2.x; modified nerf-pytorch / bmild-style} &
+\hl{200,000 iterations; exponential learning-rate decay; positional
+encoding with 10 bands; checkpoint resumption} & \hl{Original setting /
+{[}TO BE FILLED{]}} & \hl{Final checkpoint rendered on evaluation
+set} \\
+\hl{2DGS} & \hl{Official PyTorch; hbb1/2d-gaussian-splatting} &
+\hl{30,000 iterations; depth-loss weight; SfM sparse point cloud
+constraint} & \hl{Half resolution (-\/-resolution 2)} & \hl{Final
+checkpoint rendered on evaluation set} \\
+\hl{3DGS} & \hl{Official PyTorch; graphdeco-inria/gaussian-splatting} &
+\hl{30,000 iterations; default anisotropic regularization} & \hl{Half
+resolution (-\/-resolution 2)} & \hl{Final checkpoint rendered on
+evaluation set} \\
+\hl{INGP} & \hl{Instant-NGP v2.0dev} & \hl{Multiresolution hash
+encoding; 16 logarithmic levels} & \hl{{[}TO BE FILLED{]}} &
+\hl{Built-in rendering script for evaluation} \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2618}}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7382}}@{}}
+\caption{\textbf{\hl{Table9. Hardware, software, and camera-pose
+estimation environment}}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Item}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Configuration}}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Item}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Configuration}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\hl{GPU} & \hl{NVIDIA GeForce RTX 4090} \\
+\hl{GPU memory} & \hl{24 GB} \\
+\hl{Frameworks} & \hl{NeRF: TensorFlow 2.x; 2DGS/3DGS: PyTorch; INGP:
+Instant-NGP CUDA} \\
+\hl{Camera pose estimation} & \hl{COLMAP 3.14.0 with CUDA} \\
+\hl{Feature extraction} & \hl{SIFT with GPU acceleration} \\
+\hl{Matching strategy} & \hl{Sequential Matcher} \\
+\hl{Camera model} & \hl{OpenCV (fx, fy, cx, cy, k1, k2, p1, p2)} \\
+\hl{Single-camera constraint} & \hl{Enabled
+(-\/-ImageReader.single\_camera 1)} \\
+\hl{Sparse reconstruction} & \hl{Incremental SfM} \\
+\hl{Image undistortion} & \hl{COLMAP image\_undistorter} \\
+\end{longtable}
