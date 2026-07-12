@@ -1,6 +1,6 @@
 # 3DGS-Survey-Paper
 
-LaTeX source for: **3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey**
+LaTeX source for: **UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection**
 
 ## Build
 
@@ -51,9 +51,9 @@ pdflatex main
 ## Citation
 
 ```bibtex
-@article{tao2026_3dgs_survey,
+@article{tao2026_dong_drum_tower,
   author  = {Tao, Jiaxing},
-  title   = {3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey},
+  title   = {UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection},
   journal = {IEEE Transactions on Visualization and Computer Graphics},
   year    = {2026},
   doi     = {10.5281/zenodo.20263999}

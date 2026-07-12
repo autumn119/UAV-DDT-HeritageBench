@@ -1,0 +1,41 @@
+%% sections/abstract.tex
+
+\begin{abstract}
+Dong drum towers are emblematic timber heritage structures of the Dong
+ethnic group in Southwest China. Their layered eaves, dense timber
+frameworks, roof-crown systems, and shadowed internal spaces pose
+substantial challenges for comprehensive digital documentation. This
+study establishes an open, conservation-oriented benchmark for UAV-based
+neural reconstruction of four representative Dong drum towers---Chaoli,
+Congjiang, Zeli, and Zengchong. Four neural reconstruction methods,
+including Neural Radiance Fields (NeRF), 2D Gaussian Splatting (2DGS),
+3D Gaussian Splatting (3DGS), and Instant-NGP (INGP), were evaluated
+under a unified and reproducible workflow that integrates UAV image
+acquisition, SfM-based camera pose estimation, train/test splitting,
+scene-level reconstruction, and standardized evaluation. The benchmark
+provides open access to the dataset, source code, experimental
+parameters, train/test splits, and reproduction protocols through a
+public GitHub repository. Rendering quality was assessed using PSNR,
+SSIM, and LPIPS, together with training efficiency, rendering speed,
+and component-level visual interpretation. The results show that 3DGS
+achieved the strongest overall image fidelity and structural similarity,
+with average PSNR and SSIM values of 31.60~dB and 0.924, respectively.
+INGP obtained the best average LPIPS value of 0.075 and the shortest
+training time, indicating its advantage for rapid reconstruction and
+perceptual visualization. NeRF produced stable but less efficient
+results, whereas 2DGS showed limited performance in image-level
+rendering metrics under the current configuration, although its
+surface-oriented formulation remains relevant for future
+geometry-focused evaluation. By combining an open benchmark,
+quantitative metrics, architectural component readability, and
+conservation-oriented interpretation, this study provides a
+reproducible and task-aware basis for selecting neural reconstruction
+methods for complex timber heritage documentation.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Dong drum tower, neural reconstruction, UAV photogrammetry,
+Neural Radiance Fields (NeRF), 3D Gaussian Splatting (3DGS),
+2D Gaussian Splatting (2DGS), Instant-NGP, heritage documentation,
+benchmark
+\end{IEEEkeywords}

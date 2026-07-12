@@ -4,7 +4,7 @@ authors:
   - family-names: "Tao"
     given-names: "Jiaxing"
     affiliation: "Department of Computer Science and Technology, Kaili College, Guizhou, China"
-title: "3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey"
+title: "UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection"
 version: 1.0.0
 date-released: 2026-07-09
 url: "https://github.com/autumn119/3DGS-Survey-Paper"
@@ -12,9 +12,12 @@ repository-code: "https://github.com/autumn119/3DGS-Survey-Paper"
 doi: "10.5281/zenodo.20263999"
 license: CC-BY-4.0
 keywords:
+  - "Dong drum tower"
+  - "neural reconstruction"
+  - "UAV photogrammetry"
+  - "NeRF"
   - "3D Gaussian Splatting"
-  - "novel view synthesis"
-  - "neural rendering"
-  - "survey"
+  - "2D Gaussian Splatting"
+  - "Instant-NGP"
+  - "heritage documentation"
   - "benchmark"
-  - "taxonomy"
