@@ -28,9 +28,9 @@ pdflatex main
 ├── sections/                # Per-section .tex files
 │   ├── abstract.tex
 │   ├── introduction.tex
-│   ├── related_work.tex
-│   ├── taxonomy.tex
-│   ├── benchmark.tex
+│   ├── research_background.tex
+│   ├── study_objects.tex
+│   ├── method.tex
 │   ├── analysis.tex
 │   └── conclusion.tex
 ├── figures/                 # All paper figures (PDF/EPS)
