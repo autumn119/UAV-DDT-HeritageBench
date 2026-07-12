@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+authors:
+  - family-names: "Tao"
+    given-names: "Jiaxing"
+    affiliation: "Department of Computer Science and Technology, Kaili College, Guizhou, China"
+title: "3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey"
+version: 1.0.0
+date-released: 2026-07-09
+url: "https://github.com/autumn119/3DGS-Survey-Paper"
+repository-code: "https://github.com/autumn119/3DGS-Survey-Paper"
+doi: "10.5281/zenodo.20263999"
+license: CC-BY-4.0
+keywords:
+  - "3D Gaussian Splatting"
+  - "novel view synthesis"
+  - "neural rendering"
+  - "survey"
+  - "benchmark"
+  - "taxonomy"

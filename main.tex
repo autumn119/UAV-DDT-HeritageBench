@@ -1,0 +1,76 @@
+%% main.tex — 3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey
+%% Target: IEEE TVCG / TVC
+%% Author: Jiaxing Tao (Kaili College)
+%%==================================================================
+\documentclass[journal,onecolumn,11pt]{IEEEtran}
+
+%% ---- Packages ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{makecell}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey},
+    pdfauthor={Jiaxing Tao},
+    pdfkeywords={3D Gaussian Splatting, Novel View Synthesis, Neural Rendering, Survey, Benchmark}
+}
+
+%% ---- Custom commands ----
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand{\note}[1]{\textcolor{orange}{\textit{[#1]}}}
+\newcommand{\ours}{DrumTower}
+
+%% ---- Graphics path ----
+\graphicspath{{figures/}{figures/results/}}
+
+\begin{document}
+
+\title{3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey}
+
+\author{
+    \IEEEauthorblockN{Jiaxing Tao}
+    \IEEEauthorblockA{
+        Department of Computer Science and Technology\\
+        Kaili College, Guizhou, China\\
+        Email: \url{taojiaxing@example.edu.cn}
+    }
+}
+
+\maketitle
+
+%% ---- Abstract & Keywords ----
+\input{sections/abstract}
+
+%% ---- Body ----
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/taxonomy}
+\input{sections/benchmark}
+\input{sections/analysis}
+\input{sections/conclusion}
+
+%% ---- References ----
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+%% ---- Appendix / Supplementary ----
+\appendices
+\input{supplementary/supplementary}
+
+\end{document}

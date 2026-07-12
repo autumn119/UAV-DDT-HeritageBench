@@ -1,0 +1,53 @@
+%% sections/introduction.tex
+\section{Introduction}
+\label{sec:introduction}
+
+% ---- Motivation ----
+Novel view synthesis (NVS) has long been a central problem in computer
+vision and graphics. The introduction of Neural Radiance Fields (NeRF)
+\cite{mildenhall2020nerf} revolutionized the field by leveraging
+coordinate-based neural networks to encode scene radiance.
+However, NeRF-based methods suffer from slow training and rendering
+speeds due to expensive volumetric ray-marching.
+
+3D Gaussian Splatting (3DGS) \cite{kerbl3Dgaussians} addressed these
+limitations by representing scenes as collections of anisotropic 3D
+Gaussians, rendered via a differentiable tile-based rasterizer.
+This approach achieves real-time rendering ($>$100\,FPS) at quality
+comparable to or exceeding NeRF, while enabling fast training ($\sim$10\,min).
+
+% ---- Rapid Growth ----
+Since its introduction, the 3DGS community has grown explosively.
+\todo{Cite statistics: N papers in 2 years.}
+Researchers have extended 3DGS to diverse tasks including dynamic
+scene reconstruction \cite{wu20244dgs, yang2024deformable},
+scene editing, generation, and compression.
+However, this rapid growth has outpaced systematic organization,
+making it challenging for newcomers to navigate the field
+and for researchers to benchmark their contributions.
+
+% ---- Contributions ----
+This survey makes the following key contributions:
+\begin{enumerate}[leftmargin=*]
+    \item A \textbf{three-axis taxonomy} that systematically categorizes
+          3DGS research across task domains, module focus, and techniques,
+          covering \todo{120+} papers.
+    \item The \textbf{Drum Tower Dataset}, a new real-world benchmark
+          with Chinese Dong minority drum tower architecture, featuring
+          intricate geometry and multi-scale details.
+    \item A \textbf{comprehensive benchmark} evaluating \todo{12}
+          representative methods across \todo{5} datasets with detailed
+          analysis of quality, speed, and memory trade-offs.
+    \item An in-depth \textbf{analysis} of current limitations and
+          future research directions.
+\end{enumerate}
+
+% ---- Organization ----
+The remainder of this paper is organized as follows.
+Section~\ref{sec:related} reviews related surveys.
+Section~\ref{sec:taxonomy} presents our three-axis taxonomy.
+Section~\ref{sec:benchmark} describes the Drum Tower Dataset and
+benchmark methodology.
+Section~\ref{sec:analysis} provides experimental analysis and
+discussion.
+Section~\ref{sec:conclusion} concludes the paper.

@@ -1,0 +1,85 @@
+%% sections/taxonomy.tex
+\section{Three-Axis Taxonomy of 3DGS Research}
+\label{sec:taxonomy}
+
+We organize 3DGS research along three orthogonal axes that capture
+the essential dimensions of the field:
+\textbf{Task Domain} (what problem is being solved),
+\textbf{Module Focus} (which component is improved), and
+\textbf{Technique} (how the improvement is achieved).
+Figure~\ref{fig:taxonomy} provides an overview.
+
+\begin{figure*}[t]
+    \centering
+    % \includegraphics[width=\textwidth]{taxonomy.pdf}
+    \todo{Insert taxonomy figure}
+    \caption{Three-axis taxonomy of 3DGS research. Each axis represents
+    a distinct categorization dimension, enabling multi-perspective
+    analysis of the field.}
+    \label{fig:taxonomy}
+\end{figure*}
+
+% ---- Axis 1: Task Domain ----
+\subsection{Axis 1: Task Domain}
+\label{sec:taxonomy:task}
+
+3DGS methods can be categorized by the primary task they address:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Static Reconstruction}: The foundational task of
+          reconstructing static 3D scenes from multi-view images
+          \cite{kerbl3Dgaussians, yu2024mipsplatting}.
+    \item \textbf{Dynamic / 4D}: Extending 3DGS to dynamic scenes with
+          temporal variation \cite{wu20244dgs, yang2024deformable}.
+    \item \textbf{Editing}: Modifying 3DGS scenes for appearance,
+          geometry, or composition changes.
+    \item \textbf{Generation}: Generating 3DGS scenes from text, images,
+          or other modalities.
+    \item \textbf{Compression}: Reducing the memory footprint of 3DGS
+          representations for storage and transmission.
+\end{itemize}
+
+% ---- Axis 2: Module Focus ----
+\subsection{Axis 2: Module Focus}
+\label{sec:taxonomy:module}
+
+The 3DGS pipeline consists of several modules, and improvements typically
+target specific components:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Representation}: Modifying the Gaussian primitive
+          structure (e.g., 2D Gaussians \cite{huang20242dgs},
+          anchored Gaussians).
+    \item \textbf{Optimization}: Improving the training loss, scheduling,
+          or regularization.
+    \item \textbf{Rendering}: Enhancing the rasterizer (e.g.,
+          anti-aliasing \cite{yu2024mipsplatting}).
+    \item \textbf{Initialization}: Better starting points for Gaussian
+          positions and properties.
+    \item \textbf{Densification}: Adaptive control of Gaussian count
+          during training.
+\end{itemize}
+
+% ---- Axis 3: Technique ----
+\subsection{Axis 3: Technique}
+\label{sec:taxonomy:technique}
+
+The specific techniques employed to improve 3DGS include:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Anchoring}: Using anchor points to structure Gaussian
+          distribution \cite{yu2024scaffold}.
+    \item \textbf{Compression}: Pruning, quantization, or hash-based
+          encoding.
+    \item \textbf{Anti-Aliasing}: Multi-scale filtering to prevent
+          aliasing artifacts \cite{yu2024mipsplatting}.
+    \item \textbf{Regularization}: Imposing geometric or photometric
+          priors.
+    \item \textbf{Level-of-Detail (LoD)}: Hierarchical representation
+          for scalable rendering.
+    \item \textbf{Feature Augmentation}: Adding semantic or geometric
+          features to Gaussians.
+\end{itemize}
+
+\todo{Add cross-axis analysis table showing how techniques map to
+modules and tasks.}

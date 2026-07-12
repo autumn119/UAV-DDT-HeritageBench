@@ -1,0 +1,68 @@
+%% sections/analysis.tex
+\section{Analysis and Discussion}
+\label{sec:analysis}
+
+% ---- Quality vs Speed Trade-off ----
+\subsection{Quality--Speed Trade-off}
+\label{sec:analysis:quality_speed}
+
+Our benchmark reveals a fundamental trade-off between rendering quality
+and speed. Methods that improve anti-aliasing (e.g., Mip-Splatting
+\cite{yu2024mipsplatting}) achieve higher PSNR but at the cost of
+rendering FPS. Conversely, compression-focused methods (e.g.,
+Scaffold-GS \cite{yu2024scaffold}) reduce memory while maintaining
+competitive speed.
+
+\todo{Add scatter plot: PSNR vs FPS, with method labels.}
+
+% ---- Memory Analysis ----
+\subsection{Memory Efficiency}
+\label{sec:analysis:memory}
+
+The memory footprint of 3DGS varies significantly across methods.
+The original 3DGS \cite{kerbl3Dgaussians} requires substantial storage
+due to unpruned Gaussian growth. Scaffold-GS \cite{yu2024scaffold}
+achieves \todo{X\%} reduction through anchored representation.
+
+% ---- Geometric Accuracy ----
+\subsection{Geometric Accuracy}
+\label{sec:analysis:geometry}
+
+2DGS \cite{huang20242dgs} demonstrates superior geometric accuracy
+on the Drum Tower Dataset, benefiting from its surface-aligned
+representation. This is particularly evident in scenes with thin
+structures and complex occlusions.
+
+\todo{Add normal map comparison and depth error visualization.}
+
+% ---- Failure Cases ----
+\subsection{Failure Cases and Limitations}
+\label{sec:analysis:failure}
+
+Despite impressive progress, 3DGS methods still struggle with:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Texture-less regions}: Large flat surfaces lack features
+          for reliable optimization.
+    \item \textbf{Specular materials}: View-dependent appearance is
+          challenging for discrete Gaussian primitives.
+    \item \textbf{Extreme lighting}: High dynamic range scenes exceed
+          the representational capacity of spherical harmonics.
+    \item \textbf{Thin structures}: Wire-like geometry is often
+          under-represented.
+\end{itemize}
+
+% ---- Future Directions ----
+\subsection{Future Directions}
+\label{sec:analysis:future}
+
+Based on our analysis, we identify the following promising directions:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Scene-level understanding}: Integrating semantic
+          features into 3DGS for downstream tasks.
+    \item \textbf{Physics-aware representations}: Incorporating physical
+          priors for more realistic rendering.
+    \item \textbf{Edge deployment}: Optimizing 3DGS for mobile and
+          embedded devices.
+    \item \textbf{Unified frameworks}: Combining reconstruction,
+          editing, and generation in a single 3DGS framework.
+\end{enumerate}
