@@ -1,0 +1,277 @@
+%% sections/study_objects.tex
+\section{An in-depth study of the various features of the Drum Tower}
+\label{sec:study_objects}
+
+\subsubsection{\texorpdfstring{\textbf{\hl{3 Study
+Objects}}}{3 Study Objects}}\label{study-objects}
+
+\hl{The four selected cases---Chaoli, Congjiang, Zeli, and
+Zengchong---provide a representative empirical basis for method
+comparison. The external forms and structural characteristics of the
+four drum towers are shown in Fig.5. This selection strategy emphasizes
+heterogeneity in reconstruction difficulty, covering variations in roof
+hierarchy, timber density, shadowed spaces, viewpoint continuity, and
+village surroundings.}
+
+\includegraphics[width=6.6875in,height=4.41181in]{figures/media/image7.png}
+
+\textbf{\hl{Fig. 5. Four Dong drum tower cases.}}
+
+\hl{As shown in Table 2, Congjiang Drum Tower has a relatively clear
+external geometry, but still presents challenges in handling repetitive
+timber textures and preserving local details. Zeli Drum Tower is
+characterized by a distinctly layered roof structure, making it suitable
+for evaluating the ability of different methods to reconstruct repeated
+eave patterns and subtle depth relationships between roof tiers. Chaoli
+Drum Tower represents a more complex acquisition scenario, with poor
+viewpoint continuity and unstable test-view construction conditions,
+which directly affect view synthesis quality and cross-method
+comparability. Zengchong Drum Tower contains dense multi-layered eave
+geometry and rich timber-component details, posing substantial
+challenges for eva.}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0654}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1289}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2499}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3237}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2321}}@{}}
+\caption{\textbf{\hl{Table 2. Overview of the four Dong drum tower cases
+and their main reconstruction challenges}}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Case ID}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Scene}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Architectural characteristics}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Main reconstruction challenges}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Relevance to comparative evaluation}}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Case ID}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Scene}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Architectural characteristics}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Main reconstruction challenges}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\hl{Relevance to comparative evaluation}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\hl{DDT-01} & \hl{Chaoli Drum Tower} & \hl{Multi-layered timber tower
+with complex roof hierarchy} & \hl{Large viewpoint discontinuities;
+unstable test-view construction; shadowed eave regions} & \hl{Testing
+robustness under difficult acquisition conditions} \\
+\hl{DDT-02} & \hl{Congjiang Drum Tower} & \hl{Distinct external geometry
+with relatively regular overall form} & \hl{Repetitive timber textures;
+local detail preservation} & \hl{Comparing rendering fidelity and
+texture reconstruction} \\
+\hl{DDT-03} & \hl{Zeli Drum Tower} & \hl{Strongly layered roof structure
+with repeated eave patterns} & \hl{Repeated roof geometry; depth
+ambiguity between eave layers} & \hl{Evaluating structural consistency
+in complex roof regions} \\
+\hl{DDT-04} & \hl{Zengchong Drum Tower} & \hl{Dense multi-eave geometry
+with rich timber details} & \hl{Dense components; high-frequency detail
+preservation; shadowed regions} & \hl{Testing detail reconstruction and
+rendering robustness} \\
+\end{longtable}
+
+\subsection{\texorpdfstring{\hl{3.1 UAV Data Acquisition and Image
+Corpus
+Construction}}{3.1 UAV Data Acquisition and Image Corpus Construction}}\label{uav-data-acquisition-and-image-corpus-construction}
+
+UAV images were acquired using a DJI Air 2S platform equipped with its
+integrated camera sensor. The acquisition strategy was designed to
+record the external morphology of the selected Dong drum towers as
+completely as possible, including roof-crown structures, layered eaves,
+timber façades, and immediate spatial surroundings. To balance global
+coverage and local detail recording, the field campaign combined
+sequential video recording for overall scene capture with still-image
+acquisition for local observations. Multi-height and multi-angle views
+were collected where site conditions allowed.
+
+The acquisition parameters and image corpus information are summarized
+in Table 3. In this study, overlap refers to the approximate average
+overlap between adjacent UAV images during acquisition. Because the
+source records provide only average overlap values rather than separate
+forward and side overlap, the values are reported as nominal overlap
+indicators. They are used to describe acquisition density and image
+redundancy, not as independently measured forward- and side-overlap
+parameters.
+
+For Congjiang and Zengchong, twenty ground control points were measured
+using Qianxun SR6 Plus differential GPS, with reported positioning error
+below 1 cm. For Chaoli and Zeli, no GCP/RTK information is available;
+therefore, scale reliability in these scenes should be interpreted with
+caution and, where possible, checked against measurable architectural
+dimensions such as total height, base width, column spacing, or eave
+width. Weather and lighting conditions were not systematically recorded
+during the field campaign; this limitation is acknowledged in the later
+discussion.
+
+All images were standardized to a resolution of 1920 × 1080 pixels
+before neural reconstruction. The empirical corpus was constructed
+through video-frame extraction, image screening, camera-pose estimation,
+and scene-level data organization. The train/test split followed an
+LLFF-style protocol, in which one image was selected as a test image at
+regular intervals where applicable. The Chaoli scene has no independent
+test image under the current split; therefore, its reported quantitative
+results are interpreted as reference values rather than fully
+independent test-set performance.
+
+\textbf{Table 3. UAV acquisition parameters and empirical image corpus
+of the four Dong drum tower scenes}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0593}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1041}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0805}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1004}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0781}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1154}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0585}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0807}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0883}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1016}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0805}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0528}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Case ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Scene}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Flight heights (m)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Image source}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Overlap (\%)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{GCP/RTK information}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{GSD (cm)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Final image corpus}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Resolution}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Acquisition mode}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Training set}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Test set}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+DDT-01 & Chaoli Drum Tower & 80 / 70 / 60 / 50 & 33 still images; 191
+video frames & 75 & Not recorded & 4.35 & 490 & 1920 × 1080 & Circular
+acquisition & 490 & 0* \\
+DDT-02 & Congjiang Drum Tower & 70 / 60 / 40 & 96 still images; 94 video
+frames & 70 & 20 GCPs; RTK error \textless{} 1 cm & 3.27 & 555 & 1920 ×
+1080 & Circular acquisition & 494 & 61 \\
+DDT-03 & Zeli Drum Tower & 50 / 40 / 30 & 99 still images; 115 video
+frames & 80 & Not recorded & 2.96 & 588 & 1920 × 1080 & Circular
+acquisition & 514 & 74 \\
+DDT-04 & Zengchong Drum Tower & 75 / 50 / 40 / 30 & 86 still images; 159
+video frames & 80 & 20 GCPs; RTK error \textless{} 1 cm & 3.54 & 519 &
+1920 × 1080 & Circular acquisition & 458 & 61 \\
+\end{longtable}
+
+\begin{quote}
+\textbf{Note:} GSD denotes ground sampling distance. Still images refer
+to directly captured UAV photographs, whereas video frames refer to
+images extracted from UAV video sequences for photogrammetric and neural
+reconstruction. Overlap values indicate approximate average image
+overlap during acquisition. The final image corpus refers to the
+standardized images retained after frame extraction, screening, and
+scene-level organization. The Chaoli scene has no independent test image
+under the current LLFF-style split.
+\end{quote}
+
+\section{3.2 Empirical Point-Cloud and Reconstruction Corpus
+Construction}\label{empirical-point-cloud-and-reconstruction-corpus-construction}
+
+The UAV data were further processed to construct an empirical corpus for
+neural rendering and reconstruction experiments. The workflow included
+frame extraction from UAV videos, image quality screening, camera pose
+estimation, sparse reconstruction, dense point-cloud generation where
+available, and image normalization for different reconstruction methods.
+The corpus includes raw or extracted UAV images, image metadata,
+SfM-based sparse point clouds, dense point clouds, reconstruction
+outputs from four neural methods, and selected rendered views for
+quantitative and qualitative evaluation.
+
+The UAV-derived point-cloud statistics are summarized in Table 4. These
+point clouds were generated during the photogrammetric reconstruction
+workflow and provide scene-level information on data completeness,
+missing regions, and reconstruction difficulty. They are used as spatial
+references for corpus description, but not as independent geometric
+ground truth for metric accuracy evaluation.
+
+\textbf{\hl{Table 4. Summary statistics of the UAV-derived point-cloud
+datasets}}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0689}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1387}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0905}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0947}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1023}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1051}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0774}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1401}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1822}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Case ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Scene}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Valid images}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Sparse points}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Dense points}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Point density}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Noise level}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Estimated coverage (\%)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Major missing regions}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+DDT-01 & Chaoli Drum Tower & 490 & 287,190 & 14,631,743 & Medium & Low &
+85 & Inner base and lower rear side \\
+DDT-02 & Congjiang Drum Tower & 555 & 50,648 & 13,801,780 & Relatively
+high & Low & 90 & Tower tip and internal structure \\
+DDT-03 & Zeli Drum Tower & 588 & 364,582 & 39,357,222 & Relatively high
+& Low & 88 & Shadowed areas beneath the eaves \\
+DDT-04 & Zengchong Drum Tower & 519 & 72,546 & 19,631,785 & Medium & Low
+& 87 & Inner side of dense multi-layered eaves \\
+\end{longtable}
+
+\begin{quote}
+\textbf{Note:} Valid images refer to the images used for point-cloud
+reconstruction after data screening. Sparse and dense points were
+generated during the photogrammetric reconstruction workflow. Point
+density and noise level are reported as relative quality indicators
+after point-cloud filtering. Estimated coverage indicates the
+approximate completeness of the reconstructed external structure.
+\end{quote}
