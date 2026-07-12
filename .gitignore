@@ -1,0 +1,51 @@
+# ============================================================
+# .gitignore — LaTeX 论文仓库
+# ============================================================
+
+# ---- LaTeX 编译产物 ----
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.synctex(busy)
+*.fls
+*.fdb_latexmk
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+*.bcf
+*.run.xml
+*.xml
+*.xdv
+*.dvi
+
+# ---- 编译输出 PDF（用 Release 归档，不提交到 Git） ----
+main.pdf
+*.pdf
+
+# ---- 例外：figures 目录下的 PDF 保留（论文图片） ----
+!figures/**/*.pdf
+!figures/*.pdf
+
+# ---- 系统文件 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 编辑器 ----
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---- 其他 ----
+*.zip
+*.tar.gz
