@@ -1,9 +1,8 @@
 %% sections/Research_Background.tex
 \section{Related Work}\label{sec:research_background}
 
-\subsection{\texorpdfstring{\textbf{2. Literature Background and
+\subsection{\textbf{2. Literature Background and
 Conservation-Oriented Problem
-Definition}}{2. Literature Background and Conservation-Oriented Problem 
 Definition}}\label{literature-background-and-conservation-oriented-problem-definition}
 
 Existing research has made important progress in the digital
@@ -91,14 +90,14 @@ challenges for digital reconstruction. Classical registration and
 model-fitting methods, such as ICP and RANSAC, provide essential support
 for 3D alignment and geometric robustness, but they do not directly
 address the view-synthesis and rendering challenges posed by complex
-heritage scenes {[}28,29{]}. Existing-building BIM reconstruction and
+heritage scenes [28,29]. Existing-building BIM reconstruction and
 large-scale 3D modeling studies have shown that complex heritage
 environments often require the integration of point-cloud processing,
-semantic enrichment, and object-based interpretation {[}30--32{]}.
+semantic enrichment, and object-based interpretation [30--32].
 Knowledge-based HBIM enrichment and mesh-based information modeling
 further indicate that high-quality reconstruction is not only a visual
 task, but also a prerequisite for semantic representation and downstream
-conservation use {[}33,34{]}. For Dong drum towers, these challenges are
+conservation use [33,34]. For Dong drum towers, these challenges are
 amplified by multi-layered eaves, repeated roof geometries, dense timber
 components, roof-crown details, and heavily shaded spaces beneath the
 eaves.
@@ -109,24 +108,24 @@ Documentation}\label{related-work-on-neural-reconstruction-and-heritage-document
 Recent advances in neural rendering have opened new possibilities for
 the digital reconstruction of complex heritage scenes. Local Light Field
 Fusion provided an early practical framework for view synthesis with
-prescribed sampling strategies {[}35{]}. Neural Radiance Fields
+prescribed sampling strategies [35]. Neural Radiance Fields
 demonstrated that scene geometry and appearance can be jointly encoded
 as a continuous radiance field for high-quality novel-view synthesis
-{[}36{]}. Mip-NeRF and Mip-NeRF 360 further improved anti-aliasing and
+[36]. Mip-NeRF and Mip-NeRF 360 further improved anti-aliasing and
 unbounded-scene rendering, making neural scene representation more
-robust in real-world environments {[}37,38{]}. Instant-NGP greatly
+robust in real-world environments [37,38]. Instant-NGP greatly
 reduced training cost through multiresolution hash encoding, improving
-the practicality of neural rendering workflows {[}39{]}. More recently,
+the practicality of neural rendering workflows [39]. More recently,
 3D Gaussian Splatting achieved real-time radiance-field rendering with
-strong visual fidelity {[}40{]}, while 2D Gaussian Splatting emphasized
-a more geometrically oriented surface representation {[}41{]}.
+strong visual fidelity [40], while 2D Gaussian Splatting emphasized
+a more geometrically oriented surface representation [41].
 Extensions such as GS-SLAM and deformable 3D Gaussians have further
 demonstrated the broader applicability of Gaussian-based representations
-to dense SLAM and dynamic-scene reconstruction {[}42,43{]}.
+to dense SLAM and dynamic-scene reconstruction [42,43].
 
 In image-based rendering tasks, PSNR, SSIM, and LPIPS are widely used to
 measure pixel-level fidelity, structural similarity, and perceptual
-similarity, respectively {[}44,45{]}. These metrics provide a useful
+similarity, respectively [44,45]. These metrics provide a useful
 basis for comparing rendered views with reference images, but they do
 not fully capture the conservation value of reconstructed outputs. For
 architectural heritage, especially complex timber structures,
@@ -134,14 +133,14 @@ reconstruction quality must also be interpreted in relation to component
 readability, structural continuity, and downstream documentation tasks.
 Research on 3D point clouds has similarly highlighted the importance of
 geometry-aware interpretation and downstream spatial understanding
-{[}46{]}.
+[46].
 
 Despite these advances, the applicability of neural reconstruction
 methods to complex timber heritage remains insufficiently examined. Most
 existing studies on Dong drum towers have focused on sound-field
 simulation, mathematical modeling, UAV-based documentation, or
 HBIM-oriented modeling, rather than controlled cross-method evaluation
-under the same empirical heritage dataset {[}9--12{]}. As a result, it
+under the same empirical heritage dataset [9--12]. As a result, it
 remains unclear how NeRF-, Gaussian-, and hash-encoding-based methods
 behave when processing multi-eave timber structures with repeated
 components, occluded spaces, and strong illumination variation. More
@@ -200,171 +199,3 @@ reconstruction methods in conservation-oriented workflows and
 contributes to the broader application of neural reconstruction
 technologies in heritage science.
 
-\section{\texorpdfstring{\hl{2.3.Study Area and Empirical
-Corpus}}{2.3.Study Area and Empirical Corpus}}\label{study-area-and-empirical-corpus}
-
-\hl{The study area is located in Qiandongnan Miao and Dong Autonomous
-Prefecture, southeastern Guizhou Province, China (showed in fig.2). This
-mountainous multiethnic region is characterized by complex terrain,
-dense Dong settlements, and a rich tradition of timber architectural
-heritage. Dong villages in this region retain a large number of
-traditional drum towers, which are closely associated with village
-spatial organization, communal life, ritual practice, and the
-transmission of timber construction knowledge. These characteristics
-make Qiandongnan an appropriate empirical setting for investigating
-UAV-based neural reconstruction methods under real heritage
-documentation conditions.}
-
-\hl{The selected cases are four representative Dong drum towers: Chaoli,
-Congjiang, Zeli, and Zengchong. They were chosen because they reflect
-differences in tower morphology, roof hierarchy, surrounding spatial
-conditions, component density, and image acquisition difficulty. Rather
-than treating the four cases as interchangeable architectural samples,
-this study uses them as heterogeneous heritage scenes to examine whether
-different neural reconstruction methods can remain robust when
-confronted with multi-layered eaves, repeated timber components,
-roof-crown details, occluded lower spaces, and complex illumination
-conditions.}
-
-\includegraphics[width=6.68681in,height=5.06944in]{figures/media/image3.png}
-
-\textbf{\hl{Fig. 2. Location of the study area and selected Dong drum
-tower cases in Qiandongnan Miao and Dong Autonomous Prefecture, Guizhou
-Province, China.}}
-
-\hl{(a) Location of Guizhou Province in China. (b) Location of
-Qiandongnan Miao and Dong Autonomous Prefecture within Guizhou Province.
-(c) Spatial distribution of the selected Dong drum tower cases,
-including Chaoli, Congjiang, Zeli, and Zengchong Drum Towers.}
-
-\hl{Administrative boundaries and base map data were used for spatial
-reference; all selected drum tower cases are marked by red stars.}
-
-\textbf{\hl{2.4 Conservation significance and documentation requirements
-of Dong drum towers}}
-
-\hl{Dong drum towers are conservation-relevant timber heritage systems
-whose architectural components encode structural logic, craft knowledge,
-spatial hierarchy, and symbolic meaning. Digital documentation should
-therefore capture not only global tower morphology but also
-component-level details essential for restoration, HBIM-oriented
-modeling, and long-term monitoring.}
-
-\textbf{\hl{Table 1. Conservation-relevant architectural components and
-documentation requirements of Dong drum towers.}}
-
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1939}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2513}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2339}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3210}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Heritage component}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Conservation significance}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Documentation challenge}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{\hl{Required reconstruction capability}}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\hl{Layered eaves} & \hl{Reflect roof hierarchy and traditional
-carpentry logic} & \hl{Self-occlusion, repeated elements} & \hl{High
-edge fidelity and multi-layer separation} \\
-\hl{Roof-crown system} & \hl{Symbolic and morphological marker} &
-\hl{Small-scale elevated component} & \hl{Accurate recovery of fine
-upper details} \\
-\hl{Columns and beams} & \hl{Structural framework and vertical order} &
-\hl{Dense intersections, occlusion} & \hl{Component-level visibility and
-structural continuity} \\
-\hl{Mortise-and-tenon joint areas} & \hl{Traditional timber connection
-knowledge} & \hl{Small-scale details, low contrast} & \hl{Fine-detail
-preservation and readability} \\
-\hl{Bracket-like supporting members} & \hl{Support between roof layers}
-& \hl{Repeated elements, dense shadows} & \hl{Component
-distinguishability and stable reconstruction} \\
-\hl{Lattice panels and enclosure components} & \hl{Enclosure form and
-decorative patterns} & \hl{Thin elements, repetitive patterns} &
-\hl{Accurate boundary recovery and texture consistency} \\
-\hl{Lower base area} & \hl{Restoration and monitoring} & \hl{Occlusion,
-limited low-angle UAV views} & \hl{Robust reconstruction of lower
-components} \\
-\hl{Internal timber space} & \hl{Hidden structural relationships} &
-\hl{Low illumination, sparse views} & \hl{Robust reconstruction under
-sparse, low-texture conditions} \\
-\hl{Areas beneath multi-layered eaves} & \hl{Weathering, repair traces}
-& \hl{Strong shadows, narrow angles} & \hl{Shadow-tolerant
-reconstruction and preservation of local details} \\
-\end{longtable}
-
-\hl{This component-level understanding establishes a clear link between
-heritage significance, reconstruction challenges, and the capabilities
-required from UAV-based neural reconstruction methods. It provides the
-foundation for evaluating whether methods such as NeRF, 2DGS, 3DGS, and
-INGP can preserve conservation-relevant features.}
-
-\textbf{\hl{2.5 Typical Dong drum tower morphologies}}
-
-\hl{Dong drum towers exhibit substantial morphological diversity,
-largely attributable to traditional construction practices in which
-master carpenters relied on heuristic memory, experiential rules, and
-practical knowledge rather than standardized blueprints. Quadrilateral
-plans are most common, while hexagonal and octagonal forms occur less
-frequently. Four morphological attributes---overall height, number of
-eave layers, roof type, and plan shape---serve as key parameters for
-describing tower variation and guiding comparative modeling and
-analysis.}
-
-\hl{Morphological diversity provides the basis for selecting
-representative cases and examining whether neural reconstruction methods
-can robustly capture towers with different roof hierarchies, component
-densities, spatial configurations, and surrounding environmental
-conditions. As shown in Fig. 3 and Fig. 4, the construction of a Dong
-drum tower involves coordinated roof layers, column--beam joints,
-bracket supports, lattice panels, corner rafters, enclosure elements,
-and ornamental roof-crown details. These complex elements provide a
-component-level basis for evaluating whether reconstruction methods can
-preserve both global morphology and fine architectural details relevant
-to conservation, restoration surveying, and HBIM-oriented
-documentation.}
-
-\includegraphics[width=5.96042in,height=3.99167in]{figures/media/image4.png}
-
-\hl{\textbf{Fig. 3. Construction details of typical timber components in
-a Dong drum tower.}\\
-The figure shows representative construction details, including roof
-layers, column--beam joints, bracket supports, timber lattice panels,
-corner rafters, decorative elements, and \emph{Meirenkao} leaning rails.
-These component-level drawings demonstrate the coordinated structural
-and ornamental logic of Dong timber architecture and explain why
-high-resolution documentation is required for recording both overall
-form and fine construction features.}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3190}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6810}}@{}}
-\toprule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\includegraphics[width=1.80069in,height=2.88194in]{figures/media/image5.png}
-&
-\includegraphics[width=4.54653in,height=2.87431in]{figures/media/image6.png} \\
-\end{longtable}
-
-\hl{\textbf{Fig. 4. Elevation and sectional drawings of a representative
-Dong drum tower.}\\
-The drawings illustrate multi-tiered roof systems, upturned eave
-corners, small grey-tile roofing, supporting columns, beams, purlins,
-decorative eave elements, and Meirenkao leaning rails. The layered roof
-configuration and repeated eave modules demonstrate structural
-complexity and explain reconstruction challenges such as self-occlusion,
-repetitive roof geometry, shadowed eave spaces, and high-frequency
-architectural details. Beam top elevation increases cumulatively from
-5.0 m at the first floor to 21.7 m at the seventeenth floor, while most
-intermediate floors maintain a regular height of 0.9 m, reflecting a
-vertically modular timber structural system.}
