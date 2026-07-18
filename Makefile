@@ -1,10 +1,10 @@
 # ============================================================
 # Makefile — 3DGS Survey 论文编译脚本
 # 用法:
-#   make            编译论文 (pdflatex + bibtex + pdflatex×2)
-#   make clean      清理编译产物
-#   make cleanall   深度清理 (含 PDF)
-#   make view       编译并打开 PDF (macOS)
+#   make 
+#   make clean
+#   make cleanall 
+#   make view 
 # ============================================================
 
 TEX      = main
