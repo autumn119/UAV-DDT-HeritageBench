@@ -21,7 +21,7 @@ This repository provides the full LaTeX manuscript, figures, and supplementary m
 make            # compile PDF (pdflatex + bibtex)
 make clean      # remove auxiliary files
 make cleanall   # remove all generated files including PDF
-make view       # compile and open PDF (macOS)
+make view       # compile and open PDF (cross-platform)
 ```
 
 Or manually:
