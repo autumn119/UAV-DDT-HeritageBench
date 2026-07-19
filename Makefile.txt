@@ -1,5 +1,5 @@
 # ============================================================
-# Makefile — 3DGS Survey Paper compilation script
+# Makefile — UAV-DDT-HeritageBench compilation script
 # 用法:
 #   make
 #   make clean
