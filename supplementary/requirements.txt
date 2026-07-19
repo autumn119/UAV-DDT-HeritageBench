@@ -1,5 +1,5 @@
 # ============================================================
-# 3DGS Survey Benchmark — 环境依赖
+# 3DGS Survey Benchmark — Environmental dependence
 # Python 3.8 / PyTorch 1.13.1 / CUDA 11.7
 # ============================================================
 
