@@ -8,6 +8,12 @@ Manuscript, benchmark code, and dataset for:
 > **UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection**
 > Tao Jiaxing — *IEEE Transactions on Visualization and Computer Graphics*, 2026
 
+<p align="center">
+  <img src="assets/teaser.jpg" width="95%">
+  <br>
+  <em>UAV-based neural reconstruction of Dong Drum Towers — novel-view synthesis across four heritage scenes and four methods.</em>
+</p>
+
 This repository provides the **manuscript, benchmark code, and dataset** for a study evaluating UAV-based neural 3D reconstruction methods applied to Dong minority Drum Tower heritage sites in China. Four methods are compared under a unified, fairness-controlled protocol, and results are interpreted for conservation-oriented method selection.
 
 ## Overview
@@ -27,6 +33,19 @@ This repository provides the **manuscript, benchmark code, and dataset** for a s
 | Rendering speed (FPS) | Higher is better | Real-time visualization capability |
 
 **Fairness control**: identical UAV image set per scene, shared SfM camera poses, common LLFF-style train/test split (every 8th frame held out), same workstation (RTX 4090), and default/recommended parameters per method.
+
+**Scenes** (4 Dong Drum Towers):
+
+| Key | 中文 | # images | # test views |
+|-----|------|----------|--------------|
+| `celi` | 则里 | 654 | 65 |
+| `zhaoli` | 朝利 | 544 | 54 |
+| `congjiang` | 从江 | 551 | 55 |
+| `zhengchong` | 增冲 | — (frames) | 91 |
+
+| 则里 (Celi) | 朝利 (Zhaoli) | 从江 (Congjiang) | 增冲 (Zhengchong) |
+|:---:|:---:|:---:|:---:|
+| ![](assets/celi.jpg) | ![](assets/zhaoli.jpg) | ![](assets/congjiang.jpg) | ![](assets/zhengchong.jpg) |
 
 ## Prerequisites
 
@@ -73,12 +92,12 @@ UAV-DDT-HeritageBench/
 │   │   ├── method.tex
 │   │   ├── analysis.tex
 │   │   └── conclusion.tex
-├── figures/media/      # All paper figures (image1.png … image14.png)
-├── main.tex            # Main LaTeX entry file
-├── references.bib      # BibTeX references
-├── IEEEtran.cls        # IEEE journal document class
-├── IEEEtran.bst        # IEEE BibTeX style
-├──Makefile            # Build automation
+│   ├── figures/media/      # All paper figures (image1.png … image14.png)
+│   ├── main.tex            # Main LaTeX entry file
+│   ├── references.bib      # BibTeX references
+│   ├── IEEEtran.cls        # IEEE journal document class
+│   ├── IEEEtran.bst        # IEEE BibTeX style
+│   └── Makefile            # Build automation
 │
 ├── code/                   # Benchmark code
 │   ├── scenes.sh           # Shared scene→dir mapping & repo paths
@@ -137,6 +156,16 @@ python eval/metrics.py --scene all --method all
 ```
 
 > **Note on 3DGS**: at repo assembly time only 2DGS / NeRF / INGP outputs existed on the training server. `methods/3dgs/train.sh` reproduces 3DGS from the same COLMAP inputs used by 2DGS — run it to complete the four-method benchmark.
+
+## Qualitative Results
+
+Novel-view renderings on **则里 (Celi)**, held-out test view:
+
+| Ground Truth | NeRF | 2DGS | 3DGS | INGP |
+|:---:|:---:|:---:|:---:|:---:|
+| ![](assets/celi_gt.jpg) | ![](assets/celi_nerf.jpg) | ![](assets/celi_2dgs.jpg) | ![](assets/celi_3dgs.jpg) | ![](assets/celi_ingp.jpg) |
+
+Renderings are exported from `<OUTPUT_ROOT>/<scene>/<method>/test/ours_*/renders/`. See the paper for full quantitative comparisons across all four scenes.
 
 ## Data Availability
 
