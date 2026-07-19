@@ -28,15 +28,6 @@ This repository provides the **manuscript, benchmark code, and dataset** for a s
 
 **Fairness control**: identical UAV image set per scene, shared SfM camera poses, common LLFF-style train/test split (every 8th frame held out), same workstation (RTX 4090), and default/recommended parameters per method.
 
-**Scenes** (4 Dong Drum Towers):
-
-| Key | 中文 | # images | # test views |
-|-----|------|----------|--------------|
-| `celi` | 则里 | 654 | 65 |
-| `zhaoli` | 朝利 | 544 | 54 |
-| `congjiang` | 从江 | 551 | 55 |
-| `zhengchong` | 增冲 | — (frames) | 91 |
-
 ## Prerequisites
 
 **To build the paper:**
