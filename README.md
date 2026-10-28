@@ -550,7 +550,7 @@ The archived dataset can be cited as:
 
   author    = {Tao, JiaXing},
 
-  title     = {UAV-DDT-HeritageBench: UAV Imagery and COLMAP Reconstructions of Dong Drum Towers},
+  title     = {UAV-DDT-HeritageBench: Multi-Case UAV Dataset of Dong Drum Towers},
 
   year      = {2026},
 
