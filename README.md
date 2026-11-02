@@ -30,7 +30,7 @@ Benchmark code, dataset documentation, and supplementary materials for:
 
 
 
-This repository provides the **benchmark code, dataset documentation, and supplementary materials** for a study evaluating UAV-based neural 3D reconstruction methods applied to Dong minority Drum Tower heritage sites in China. Four neural methods (NeRF, 2DGS, 3DGS, Instant-NGP) plus a conventional SfM-MVS baseline are compared under a unified, fairness-controlled protocol — covering novel-view rendering quality, geometric consistency, dark-region wooden-structure preservation, and ground-level (upward-facing) reconstruction — with results interpreted for conservation-oriented method selection.
+This repository provides the **benchmark code, dataset documentation, and supplementary materials** for a study evaluating UAV-based neural 3D reconstruction methods applied to Dong minority Drum Tower heritage sites in China. Results are reported on **two independently captured image corpora** — a UAV aerial corpus (479\u00d7269, orbit capture) and a ground-level handheld-video corpus (540\u00d7960, portrait) — so that method ranking can be checked against the capture geometry actually available at a heritage site. Four neural methods (NeRF, 2DGS, 3DGS, Instant-NGP) plus a conventional SfM-MVS baseline are compared under a unified, fairness-controlled protocol — covering novel-view rendering quality, geometric consistency, dark-region wooden-structure preservation, and ground-level (upward-facing) reconstruction — with results interpreted for conservation-oriented method selection.
 
 
 
@@ -66,7 +66,9 @@ This repository provides the **benchmark code, dataset documentation, and supple
 
 
 
-**Fairness control**: identical UAV image set per scene, shared SfM camera poses, common LLFF-style train/test split (every 8th frame held out), same workstation (RTX 4090), and default/recommended parameters per method.
+**Fairness control (UAV aerial corpus)**: identical image set per scene, one shared SfM (COLMAP) pose solution used by all four methods, a fixed train/test split with ~10% of frames held out, identical resolution and colour handling, a single shared metric implementation (PSNR/SSIM via `skimage`, LPIPS via AlexNet), and one workstation — an NVIDIA **RTX 4090 D (24 GB)**, one process at a time. Each method uses its official implementation with default hyperparameters (NeRF 200k iters, 2DGS/3DGS 30k iters, INGP 50k steps).
+
+**Fairness control (ground-level corpus)**: handheld video sampled at 2 fps (Congjiang additionally 1-in-4, ~0.5 fps) and downsampled to 540×960; only SfM-registered frames are kept; every 8th frame (sorted by filename) is held out for testing. Camera poses, test frames, resolution and metric code are again shared by all four methods on the same RTX 4090 D workstation. Because test frames sit ~0.5 s from their neighbouring training frames, ground-level scores reflect *interpolation* quality and are **not** directly comparable in absolute value to the aerial scores.
 
 
 
@@ -81,6 +83,91 @@ This repository provides the **benchmark code, dataset documentation, and supple
 ------
 
 
+
+## Main Results (UAV Aerial Corpus)
+
+All numbers below are four-scene averages measured on the held-out test frames unless a per-scene column is given. Best value per column in **bold**.
+
+### Dataset statistics
+
+| Scene     | Images | Resolution | Capture   | Train | Test |
+| :-------- | -----: | :--------- | :-------- | ----: | ---: |
+| Chaoli    |    544 | 478×269    | UAV orbit |   490 |   54 |
+| Congjiang |    551 | 479×269    | UAV orbit |   496 |   55 |
+| Zeli      |    653 | 479×269    | UAV orbit |   588 |   65 |
+| Zengchong |    523 | 479×269    | UAV orbit |   467 |   56 |
+
+Raw frames are ~1914–1918 × 1076–1078; training and evaluation both use the 1/4-downsampled resolution shown above. The split is fixed and identical for all four methods. Zengchong was captured at 914 frames, of which the 523 frames sharing a consistent pose solution are used.
+
+### Novel-view quality
+
+**PSNR (dB, ↑)**
+
+| Method |    Chaoli |      Zeli | Congjiang | Zengchong |      Mean |
+| :----- | --------: | --------: | --------: | --------: | --------: |
+| NeRF   |     16.56 |     19.26 |     20.60 |     21.84 |     19.57 |
+| 2DGS   |     26.97 |     28.66 |     32.06 |     29.55 |     29.31 |
+| 3DGS   | **30.22** | **30.70** | **33.87** | **32.36** | **31.79** |
+| INGP   |     26.58 |     27.12 |     29.38 |     28.14 |     27.81 |
+
+**SSIM (↑)**
+
+| Method |    Chaoli |      Zeli | Congjiang | Zengchong |      Mean |
+| :----- | --------: | --------: | --------: | --------: | --------: |
+| NeRF   |     0.243 |     0.511 |     0.460 |     0.561 |     0.444 |
+| 2DGS   |     0.923 |     0.950 |     0.955 |     0.953 |     0.945 |
+| 3DGS   | **0.955** | **0.965** | **0.969** | **0.970** | **0.965** |
+| INGP   |     0.879 |     0.913 |     0.898 |     0.914 |     0.901 |
+
+**LPIPS (↓)**
+
+| Method |    Chaoli |      Zeli | Congjiang | Zengchong |      Mean |
+| :----- | --------: | --------: | --------: | --------: | --------: |
+| NeRF   |     0.787 |     0.455 |     0.563 |     0.388 |     0.548 |
+| 2DGS   |     0.053 |     0.036 |     0.030 |     0.028 |     0.037 |
+| 3DGS   | **0.029** | **0.024** | **0.019** | **0.019** | **0.023** |
+| INGP   |     0.102 |     0.071 |     0.083 |     0.063 |     0.080 |
+
+3DGS ranks first on all three metrics in every scene, ahead of 2DGS by 2.48 dB PSNR on average. 2DGS is second on all three; INGP third (PSNR 27.81 dB, 3.98 dB below 3DGS) despite the shortest training time. NeRF is last on all three (19.57 dB) and is the only method that cannot render interactively.
+
+### Training efficiency and resource consumption
+
+| Method | Training time        | Peak GPU memory | Render speed  | Real-time |
+| :----- | :------------------- | :-------------- | :------------ | :-------- |
+| NeRF   | 11,138 s (≈3.1 h)    | 11.93 GiB       | 0.38 FPS      | No        |
+| 2DGS   | 389 s (≈6.5 min)     | 1.91 GiB        | **241.0 FPS** | Yes       |
+| 3DGS   | 510 s (≈8.5 min)     | 4.57 GiB        | 208.5 FPS     | Yes       |
+| INGP   | **288 s (≈4.8 min)** | **1.78 GiB**    | 84.8 FPS      | Yes       |
+
+Training time counts the training loop only (no data loading or checkpoint saving). Peak memory is the maximum of `nvidia-smi` sampled every 100 ms (includes the CUDA context). FPS is measured on an RTX 4090 D at native test resolution (479×269, INGP at 8 spp); ≥30 FPS counts as real-time. 3DGS averages ~1.36 M Gaussians per scene versus ~0.64 M for 2DGS, which explains both its higher memory and its slightly lower FPS.
+
+### Equal wall-clock time budget
+
+Iterations are not comparable across methods (INGP runs ~173.5 steps/s, 2DGS ~77.2 it/s, 3DGS ~58.8 it/s, NeRF ~18.0 it/s), so the four methods were also compared at identical elapsed training time. Snapshots are taken when the training clock first reaches the budget; a method that has already finished its default schedule keeps its final model (marked *done*).
+
+| Budget         |   NeRF |       3DGS |   2DGS |   INGP | Best PSNR |
+| :------------- | -----: | ---------: | -----: | -----: | :-------- |
+| 30 s           | 15.222 | **25.808** | 25.123 | 25.806 | 3DGS      |
+| 60 s           |  15.65 |  **26.95** |  26.44 |  26.61 | 3DGS      |
+| 120 s          |  16.26 |  **29.52** |  26.99 |  27.37 | 3DGS      |
+| 180 s          |  16.59 |  **30.09** |  27.84 |  27.66 | 3DGS      |
+| 300 s          |  16.96 |  **31.03** |  29.02 |  27.81 | 3DGS      |
+| 600 s (*done*) |  17.52 |  **31.79** |  29.31 |  27.81 | 3DGS      |
+
+Values are four-scene mean PSNR (dB). From 600 s onward 2DGS/3DGS/INGP have finished and only NeRF keeps improving; it needs 10,800 s (193,931 iters) to reach its final 19.57 dB.
+
+**Ranking stability** (Kendall τ against the default-configuration ranking 3DGS > 2DGS > INGP > NeRF):
+
+| Budget           | PSNR ranking              |  τ   |
+| :--------------- | :------------------------ | :--: |
+| 30 s             | 3DGS > INGP > 2DGS > NeRF | 0.67 |
+| 60 s             | 3DGS > INGP > 2DGS > NeRF | 0.67 |
+| 120 s            | 3DGS > INGP > 2DGS > NeRF | 0.67 |
+| 180 s – 10,800 s | 3DGS > 2DGS > INGP > NeRF | 1.00 |
+
+The ranking only differs from the default configuration below 180 s, where INGP temporarily leads 2DGS by 0.17–0.68 dB. Two mechanisms drive this: INGP converges early (30 s already gives 25.81 dB, only 2.00 dB below its final value, while 3DGS still has 5.98 dB to gain), and 2DGS/3DGS periodically reset all Gaussian opacities to near zero every 3,000 iterations during densification, so a snapshot landing just after a reset reads artificially low. SSIM ranking is identical to the default configuration at every budget; LPIPS differs only at 60 s. Each method was trained once per scene, so sub-1 dB differences at early checkpoints should not be read as stable rankings.
+
+------
 
 ## New: Extended Benchmark Experiments
 
@@ -326,6 +413,35 @@ Ground-level (upward-facing) images of the four towers, reconstructed with the f
 
 *Each composite: 5 columns (ground truth, 2DGS, INGP, NeRF, 3DGS) × 4 rows (two view groups, full view and zoomed crop).*
 
+#### Ground-level quantitative results
+
+The same four scenes were re-captured as handheld ground-level video and reconstructed with the identical protocol. Dataset statistics (frames are SfM-registered counts at 540×960):
+
+| Scene     | Images | Train | Test |
+| :-------- | -----: | ----: | ---: |
+| Chaoli    |    509 |   445 |   64 |
+| Congjiang |    484 |   423 |   61 |
+| Zeli      |    401 |   350 |   51 |
+| Zengchong |    894 |   782 |  112 |
+
+| Method |    PSNR ↑ |    SSIM ↑ |   LPIPS ↓ | Training time        | Peak GPU memory | Render speed  |
+| :----- | --------: | --------: | --------: | :------------------- | :-------------- | :------------ |
+| NeRF   |     19.26 |     0.554 |     0.600 | 3,369 s (≈56.1 min)  | 3.70 GiB        | 0.10 FPS      |
+| 2DGS   |     22.71 |     0.787 |     0.278 | 571 s (≈9.5 min)     | 2.75 GiB        | 226.4 FPS     |
+| 3DGS   | **23.44** | **0.816** | **0.223** | 619 s (≈10.3 min)    | 2.81 GiB        | **248.0 FPS** |
+| INGP   |     21.86 |     0.720 |     0.321 | **258 s (≈4.3 min)** | **2.50 GiB**    | 19.6 FPS      |
+
+Per-scene PSNR (dB):
+
+| Method |    Chaoli |      Zeli | Congjiang | Zengchong |      Mean |
+| :----- | --------: | --------: | --------: | --------: | --------: |
+| NeRF   |     18.96 |     20.95 |     17.99 |     19.16 |     19.26 |
+| 2DGS   |     22.17 |     25.62 | **19.47** |     23.60 |     22.71 |
+| 3DGS   | **22.88** | **26.93** |     18.87 | **25.09** | **23.44** |
+| INGP   |     21.45 |     25.35 |     17.88 |     22.76 |     21.86 |
+
+The four-scene **ranking is identical to the aerial corpus** (3DGS > 2DGS > INGP > NeRF), but all absolute scores are lower — 3DGS drops from 31.79 dB to 23.44 dB — because ground-level frames are larger, portrait-oriented, closer to the structure and viewed from a narrow upward-looking baseline. Congjiang is the sole exception: 2DGS (19.47 dB) beats 3DGS (18.87 dB) on PSNR, although 3DGS still wins SSIM (0.693 vs 0.673) and LPIPS (0.381 vs 0.433) there. INGP loses real-time status at this resolution (19.6 FPS at 8 spp, 98 FPS at 1 spp), which is the one efficiency conclusion that does not transfer from the aerial corpus.
+
 
 
 ------
@@ -338,7 +454,7 @@ Ground-level (upward-facing) images of the four towers, reconstructed with the f
 
 **To run the benchmark:**
 
-- CUDA-capable GPU (experiments used an NVIDIA RTX 4090, 24 GB)
+- CUDA-capable GPU (experiments used an NVIDIA RTX 4090 D, 24 GB)
 
 - Python 3.8+, PyTorch (2DGS / 3DGS / NeRF-pytorch)
 
@@ -422,7 +538,7 @@ UAV-DDT-HeritageBench/
 
 
 
-**Hardware/software used**: NVIDIA RTX 4090 (24 GB), COLMAP 3.14.0 (CUDA), PyTorch (2DGS/3DGS), TensorFlow 2.x (NeRF), Instant-NGP v2.0dev.
+**Hardware/software used**: NVIDIA RTX 4090 D (24 GB), COLMAP 3.14.0 (CUDA), PyTorch (2DGS/3DGS), TensorFlow 2.x (NeRF), Instant-NGP v2.0dev.
 
 
 
@@ -495,7 +611,7 @@ Novel-view renderings on **Zeli**, held-out test view:
 
 
 
-Renderings are exported from `<OUTPUT_ROOT>/<scene>/<method>/test/ours_*/renders/`. Quantitative comparisons across all four scenes are reported in the manuscript.
+Renderings are exported from `<OUTPUT_ROOT>/<scene>/<method>/test/ours_*/renders/`. Full quantitative comparisons for all four scenes and both corpora are tabulated in [Main Results](#main-results-uav-aerial-corpus) and [Ground-level quantitative results](#ground-level-quantitative-results) above; the four-method averages are PSNR 31.79 dB (aerial) and 23.44 dB (ground-level) for 3DGS.
 
 
 
