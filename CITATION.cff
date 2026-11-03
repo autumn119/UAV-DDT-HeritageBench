@@ -1,24 +1,39 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 authors:
-
-- family-names: "Tao"
-  given-names: "JiaXing"
-  affiliation: "Department of Computer Science and Technology, Kaili College, Guizhou, China"
-  title: "UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection"
-  version: 1.0.0
-  date-released: 2026-07-09
-  url: "https://github.com/autumn119/UAV-DDT-HeritageBench"
-  repository-code: "https://github.com/autumn119/UAV-DDT-HeritageBench"
-  doi: "10.5281/zenodo.21429615"
-  license: CC-BY-4.0
-  keywords:
-- "Dong drum tower"
-- "neural reconstruction"
-- "UAV photogrammetry"
-- "NeRF"
-- "3D Gaussian Splatting"
-- "2D Gaussian Splatting"
-- "Instant-NGP"
-- "heritage documentation"
-- "benchmark"
+  - family-names: "Huang"
+    given-names: "Wantao"
+    affiliation: "Department of College of Science, Kaili University, Kaili, China"
+  - family-names: "Zhou"
+    given-names: "Yuhan"
+    affiliation: "Department of Data Science and Information Engineering, Guizhou Minzu University, Guiyang, China"
+  - family-names: "Tao"
+    given-names: "Jiaxuan"
+    affiliation: "Department of College of Science, Kaili University, Kaili, China"
+  - family-names: "Zhang"
+    given-names: "Tianyu"
+    affiliation: "Shandong Laboratory of Aluminum Advanced Manufacturing in Binzhou (SLAAMB), Binzhou Institute of Technology, Binzhou, China"
+  - family-names: "Zhang"
+    given-names: "Chen"
+    affiliation: "Shandong Laboratory of Aluminum Advanced Manufacturing in Binzhou (SLAAMB), Binzhou Institute of Technology, Binzhou, China"
+  - family-names: "Gao"
+    given-names: "Xiang"
+    email: "xiang.gao@ia.ac.cn"
+    affiliation: "Institute of Automation, Chinese Academy of Sciences, Beijing, China"
+title: "UAV-Based Neural Reconstruction of Dong Drum Towers for Conservation Oriented Method Selection"
+version: 1.0.0
+date-released: 2026-07-09
+url: "https://github.com/autumn119/UAV-DDT-HeritageBench"
+repository-code: "https://github.com/autumn119/UAV-DDT-HeritageBench"
+doi: "10.5281/zenodo.21429615"
+license: CC-BY-4.0
+keywords:
+  - "Dong drum tower"
+  - "neural reconstruction"
+  - "UAV photogrammetry"
+  - "NeRF"
+  - "3D Gaussian Splatting"
+  - "2D Gaussian Splatting"
+  - "Instant-NGP"
+  - "heritage documentation"
+  - "benchmark"
