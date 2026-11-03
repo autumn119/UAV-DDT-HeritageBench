@@ -12,9 +12,9 @@ Benchmark code, dataset documentation, and supplementary materials for:
 
 
 
-> **UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection**
+> **UAV-Based Neural Reconstruction of Dong Drum Towers for Conservation Oriented Method Selection**
 
-> Tao JiaXing — 2026 · *Manuscript under review* (LaTeX source not included in this repository)
+> Wantao Huang, Yuhan Zhou, Jiaxuan Tao, Tianyu Zhang, Chen Zhang, Xiang Gao — 2026 · *Submitted to npj Heritage Science* (LaTeX source not included in this repository)
 
 
 
@@ -646,11 +646,11 @@ If you use this work, please cite:
 
 
 ```bibtex
-@misc{tao2026_dong_drum_tower,
-  author = {Tao, JiaXing},
-  title  = {UAV-Based Neural Reconstruction of Dong Drum Towers: A Multi-Case Benchmark for Conservation-Oriented Method Selection},
+@misc{huang2026_dong_drum_tower,
+  author = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxuan and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
+  title  = {UAV-Based Neural Reconstruction of Dong Drum Towers for Conservation Oriented Method Selection},
   year   = {2026},
-  note   = {Manuscript under review}
+  note   = {Submitted to npj Heritage Science}
 }
 
 ```
@@ -662,9 +662,9 @@ The archived dataset can be cited as:
 
 
 ```bibtex
-@dataset{tao2026_dong_drum_tower_dataset,
+@dataset{huang2026_heritagebench_dataset,
 
-  author    = {Tao, JiaXing},
+  author    = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxuan and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
 
   title     = {UAV-DDT-HeritageBench: Multi-Case UAV Dataset of Dong Drum Towers},
 
