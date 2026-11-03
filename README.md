@@ -647,7 +647,7 @@ If you use this work, please cite:
 
 ```bibtex
 @misc{huang2026_dong_drum_tower,
-  author = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxuan and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
+  author = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxing and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
   title  = {UAV-Based Neural Reconstruction of Dong Drum Towers for Conservation Oriented Method Selection},
   year   = {2026},
   note   = {Submitted to npj Heritage Science}
