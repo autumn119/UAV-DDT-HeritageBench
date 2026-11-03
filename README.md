@@ -664,7 +664,7 @@ The archived dataset can be cited as:
 ```bibtex
 @dataset{huang2026_heritagebench_dataset,
 
-  author    = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxuan and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
+  author    = {Huang, Wantao and Zhou, Yuhan and Tao, Jiaxing and Zhang, Tianyu and Zhang, Chen and Gao, Xiang},
 
   title     = {UAV-DDT-HeritageBench: Multi-Case UAV Dataset of Dong Drum Towers},
 
